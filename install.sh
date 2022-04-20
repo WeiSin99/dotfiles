@@ -1,7 +1,10 @@
 #!/bin/zsh
 
-mkdir -p ~/.config/nvim/plugin
-mkdir -p ~/.config/nvim/ftplugin
+mkdir -p ~/.config/nvim/lua/user
+
+for f in `find ~/.config/nvim \( -iname \*.lua -o -iname \*.vim \)`; do
+    rm -rf $f
+done
 
 for f in `find . \( -iname \*.lua -o -iname \*.vim \)`; do
     rm -rf ~/.config/nvim/$f
