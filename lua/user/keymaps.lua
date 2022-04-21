@@ -15,4 +15,3 @@ keymap("n", "<leader>Y", 'gg"+yG', opts)
 
 keymap("v", "J", ":m '>+1<CR>gv=gv", opts)
 keymap("v", "K", ":m '<-2<CR>gv=gv", opts)
-

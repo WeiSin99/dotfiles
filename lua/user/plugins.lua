@@ -29,4 +29,3 @@ return packer.startup(function(use)
   -- colorscheme
   use "morhetz/gruvbox"
 end)
-
