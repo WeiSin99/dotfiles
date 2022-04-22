@@ -31,12 +31,7 @@ return packer.startup(function(use)
   -- autocompletion
   use "hrsh7th/nvim-cmp"
   use "hrsh7th/cmp-buffer"
-  use "saadparwaiz1/cmp_luasnip"
   use "hrsh7th/cmp-nvim-lsp"
-
-  -- snippet
-  use "L3MON4D3/LuaSnip"
-  use "rafamadriz/friendly-snippets"
 
   -- LSP
   use "neovim/nvim-lspconfig"
