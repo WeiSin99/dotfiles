@@ -24,6 +24,7 @@ packer.init {
 
 return packer.startup(function(use)
   use "wbthomason/packer.nvim"
+  use "nvim-lua/plenary.nvim"
 
   -- colorscheme
   use "morhetz/gruvbox"
@@ -39,4 +40,7 @@ return packer.startup(function(use)
   -- LSP
   use "neovim/nvim-lspconfig"
   use "williamboman/nvim-lsp-installer"
+
+  -- Telescope
+  use "nvim-telescope/telescope.nvim"
 end)
