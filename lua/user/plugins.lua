@@ -27,7 +27,7 @@ return packer.startup(function(use)
   use "nvim-lua/plenary.nvim"
 
   -- colorscheme
-  use "morhetz/gruvbox"
+  use "sainnhe/gruvbox-material"
 
   -- autocompletion
   use "hrsh7th/nvim-cmp"
@@ -43,4 +43,10 @@ return packer.startup(function(use)
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
+
+  -- Treesitter
+  use {
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
+  }
 end)
