@@ -23,9 +23,17 @@ packer.init {
 }
 
 return packer.startup(function(use)
-  -- My plugins here
-  use "wbthomason/packer.nvim" 
-  
+  use "wbthomason/packer.nvim"
+
   -- colorscheme
   use "morhetz/gruvbox"
+
+  -- autocompletion
+  use "hrsh7th/nvim-cmp"
+  use "hrsh7th/cmp-buffer"
+  use "saadparwaiz1/cmp_luasnip"
+
+  -- snippet
+  use "L3MON4D3/LuaSnip"
+  use "rafamadriz/friendly-snippets"
 end)

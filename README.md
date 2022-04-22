@@ -1,1 +1,1 @@
-1. Install packer https://github.com/wbthomason/packer.nvim 
+1. Install packer https://github.com/wbthomason/packer.nvim
