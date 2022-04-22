@@ -4,6 +4,14 @@ if not cmp_status_ok then
   return
 end
 
+local snip_status_ok, luasnip = pcall(require, "luasnip")
+if not snip_status_ok then
+  vim.notify("luasnip not found")
+  return
+end
+
+require("luasnip/loaders/from_vscode").lazy_load()
+
 local kind_icons = {
   Text = "",
   Method = "m",
@@ -33,6 +41,11 @@ local kind_icons = {
 }
 
 cmp.setup {
+  snippet = {
+    expand = function(args)
+      luasnip.lsp_expand(args.body)
+    end,
+  },
   mapping = {
     ["<C-b>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),

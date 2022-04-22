@@ -33,6 +33,9 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-buffer"
   use "hrsh7th/cmp-nvim-lsp"
 
+  -- snippet
+   use "L3MON4D3/LuaSnip"
+
   -- LSP
   use "neovim/nvim-lspconfig"
   use "williamboman/nvim-lsp-installer"
