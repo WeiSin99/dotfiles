@@ -13,6 +13,8 @@ local options = {
     smartindent = true,
     termguicolors = true,
     backspace = { "indent", "eol", "start" },
+    updatetime = 300,
+    signcolumn = "yes",
 }
 
 for k, v in pairs(options) do
