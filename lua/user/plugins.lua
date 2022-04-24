@@ -51,4 +51,8 @@ return packer.startup(function(use)
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
   }
+
+  -- Comment
+  use "numToStr/Comment.nvim"
+  use 'JoosepAlviste/nvim-ts-context-commentstring'
 end)
