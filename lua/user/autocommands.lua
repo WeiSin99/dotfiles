@@ -7,7 +7,7 @@ vim.cmd [[
 
   augroup MY_GROUP
     autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
+    autocmd TextYankPost * silent! lua vim.highlight.on_yank({ higroup = "TermCursor" })
     autocmd BufWritePre * :call TrimWhitespace()
   augroup END
 ]]
