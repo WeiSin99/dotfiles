@@ -25,6 +25,7 @@ packer.init {
 return packer.startup(function(use)
   use "wbthomason/packer.nvim"
   use "nvim-lua/plenary.nvim"
+  use "tpope/vim-surround"
 
   -- colorscheme
   use "sainnhe/gruvbox-material"
@@ -54,5 +55,5 @@ return packer.startup(function(use)
 
   -- Comment
   use "numToStr/Comment.nvim"
-  use 'JoosepAlviste/nvim-ts-context-commentstring'
+  use "JoosepAlviste/nvim-ts-context-commentstring"
 end)
