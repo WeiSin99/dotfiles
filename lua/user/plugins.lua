@@ -25,9 +25,12 @@ packer.init {
 return packer.startup(function(use)
   use "wbthomason/packer.nvim"
   use "nvim-lua/plenary.nvim"
+  use "tpope/vim-surround"
 
   -- colorscheme
   use "sainnhe/gruvbox-material"
+  use "marko-cerovac/material.nvim"
+  use 'folke/tokyonight.nvim'
 
   -- autocompletion
   use "hrsh7th/nvim-cmp"
@@ -49,4 +52,11 @@ return packer.startup(function(use)
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
   }
+
+  -- Comment
+  use "numToStr/Comment.nvim"
+  use "JoosepAlviste/nvim-ts-context-commentstring"
+
+  -- Git
+  use "lewis6991/gitsigns.nvim"
 end)
