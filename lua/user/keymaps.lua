@@ -6,7 +6,6 @@ vim.g.mapleader = " "
 
 keymap("n", "<leader><CR>", ":lua require('user.utils').clearCachedPackage()<CR>:source init.lua<CR>", opts)
 
-
 keymap("v", "<leader>p", '"_dP', opts)
 keymap("v", "<leader>y", '"+y', opts)
 keymap("n", "<leader>y", '"+y', opts)
@@ -15,7 +14,14 @@ keymap("n", "<leader>Y", 'gg"+yG', opts)
 keymap("v", "J", ":m '>+1<CR>gv=gv", opts)
 keymap("v", "K", ":m '<-2<CR>gv=gv", opts)
 
-keymap("n", "<leader>pv", ":Vex<CR>", opts)
+-- windows
+keymap("n", "<C-h>", "<C-w>h", opts)
+keymap("n", "<C-j>", "<C-w>j", opts)
+keymap("n", "<C-k>", "<C-w>k", opts)
+keymap("n", "<C-l>", "<C-w>l", opts)
+
+-- nvim-tree
+keymap("n", "<leader>b", ":NvimTreeToggle<CR>", opts)
 
 -- Telescope
 keymap("n", "<C-p>", "<cmd>lua require'telescope.builtin'.find_files()<cr>", opts)
