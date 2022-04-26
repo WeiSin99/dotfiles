@@ -21,11 +21,11 @@ vim.g.nvim_tree_icons = {
     empty_open = "",
     symlink = "",
     symlink_open = "",
-  }
+  },
 }
 
 vim.g.nvim_tree_show_icons = {
-  git =  1,
+  git = 1,
   folders = 1,
   files = 1,
   folder_arrows = 1,
@@ -48,7 +48,7 @@ end
 
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
-nvim_tree.setup {
+nvim_tree.setup({
   auto_reload_on_write = true,
   disable_netrw = false,
   hijack_cursor = true,
@@ -72,7 +72,7 @@ nvim_tree.setup {
     mappings = {
       custom_only = false,
       list = {
-        { key = "v", cb = tree_cb "vsplit" },
+        { key = "v", cb = tree_cb("vsplit") },
       },
     },
   },
@@ -119,7 +119,7 @@ nvim_tree.setup {
   },
   filters = {
     dotfiles = false,
-    custom = {},
+    custom = { ".git", ".DS_Store" },
     exclude = {},
   },
   git = {
@@ -163,4 +163,4 @@ nvim_tree.setup {
       profile = false,
     },
   },
-}
+})

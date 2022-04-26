@@ -24,7 +24,7 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 keymap("n", "<leader>b", ":NvimTreeToggle<CR>", opts)
 
 -- Telescope
-keymap("n", "<leader>p", "<cmd>lua require'telescope.builtin'.find_files()<cr>", opts)
+keymap("n", "<leader>p", "<cmd>lua require'telescope.builtin'.find_files({ hidden = true })<cr>", opts)
 keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.live_grep()<cr>", opts)
 
 -- Bufferline
