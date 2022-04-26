@@ -41,10 +41,11 @@ keymap("n", "<leader>l", "<cmd>BufferLineCycleNext<cr>", opts)
 keymap("n", "<leader>h", "<cmd>BufferLineCyclePrev<cr>", opts)
 keymap("n", "<leader>mbl", "<cmd>BufferLineMoveNext<cr>", opts)
 keymap("n", "<leader>mbh", "<cmd>BufferLineMovePrev<cr>", opts)
+keymap("n", "<leader>w", "<cmd>Bdelete<cr>", opts)
 
 -- Comment
 vim.keymap.set("n", "<leader>/", "<Plug>(comment_toggle_current_linewise)")
-vim.keymap.set("v", "<leader>/", '<Plug>(comment_toggle_blockwise_visual)')
+vim.keymap.set("v", "<leader>/", "<Plug>(comment_toggle_blockwise_visual)")
 
 -- Gitsigns
 keymap("n", "<leader>gd", "<cmd>Gitsigns preview_hunk<cr>", opts)
