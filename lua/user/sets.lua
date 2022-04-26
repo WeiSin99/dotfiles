@@ -16,6 +16,7 @@ local options = {
   updatetime = 300,
   signcolumn = "yes",
   splitright = true,
+  showmode = false,
 }
 
 for k, v in pairs(options) do
