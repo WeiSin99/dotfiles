@@ -70,4 +70,7 @@ return packer.startup(function(use)
 
   -- null-ls
   use("jose-elias-alvarez/null-ls.nvim")
+
+  -- lualine
+  use("nvim-lualine/lualine.nvim")
 end)
