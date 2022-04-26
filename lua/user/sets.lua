@@ -1,7 +1,7 @@
 local options = {
   scrolloff = 8,
   guicursor = "",
-  hlsearch = true,
+  hlsearch = false,
   incsearch = true,
   number = true,
   relativenumber = true,
