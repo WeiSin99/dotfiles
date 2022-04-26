@@ -66,4 +66,7 @@ return packer.startup(function(use)
 
   -- bufferline
   use "akinsho/bufferline.nvim"
+
+  -- null-ls
+  use "jose-elias-alvarez/null-ls.nvim"
 end)
