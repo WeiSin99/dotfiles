@@ -53,6 +53,7 @@ material.setup({
     LspReferenceWrite = { bg = "#3b4261" },
     Visual = { bg = "#292b36" },
     LineNr = { fg = "#5e6273", bg = "#090b10"  },
+    NvimTreeOpenedFile = { bg = "#292b36" },
     -- Comment = { fg = "#383c4a" },
   } -- Overwrite highlights with your own
 })
