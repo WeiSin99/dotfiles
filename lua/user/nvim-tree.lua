@@ -119,7 +119,7 @@ nvim_tree.setup({
   },
   filters = {
     dotfiles = false,
-    custom = { ".git", ".DS_Store" },
+    custom = { "^.git$", ".DS_Store" },
     exclude = {},
   },
   git = {
