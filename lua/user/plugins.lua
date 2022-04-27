@@ -73,4 +73,7 @@ return packer.startup(function(use)
 
   -- lualine
   use("nvim-lualine/lualine.nvim")
+
+  -- indent-line
+  use("lukas-reineke/indent-blankline.nvim")
 end)
