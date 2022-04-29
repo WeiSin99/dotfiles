@@ -4,14 +4,15 @@ if not status_ok then
   return
 end
 
-local actions = require "telescope.actions"
+local actions = require("telescope.actions")
 
-telescope.setup {
+telescope.setup({
   defaults = {
 
     prompt_prefix = " ",
     selection_caret = " ",
     path_display = { "smart" },
+    file_ignore_patterns = { "^.git/" },
 
     mappings = {
       i = {
@@ -24,7 +25,6 @@ telescope.setup {
         ["<Up>"] = actions.move_selection_previous,
 
         ["<C-c>"] = actions.close,
-
 
         ["<CR>"] = actions.select_default,
         ["<C-x>"] = actions.select_horizontal,
@@ -80,4 +80,4 @@ telescope.setup {
   },
   pickers = {},
   extensions = {},
-}
+})
