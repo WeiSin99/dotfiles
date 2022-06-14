@@ -78,7 +78,16 @@ end
 
 M.on_attach = function(client, bufnr)
   -- so that null-ls will be used for formatting as default
-  if client.name == "tsserver" or client.name == "sumneko_lua" then
+  if client.name == "tsserver" then
+    client.resolved_capabilities.document_formatting = false
+  end
+  if client.name == "sumneko_lua" then
+    client.resolved_capabilities.document_formatting = false
+  end
+  if client.name == "html" then
+    client.resolved_capabilities.document_formatting = false
+  end
+  if client.name == "jsonls" then
     client.resolved_capabilities.document_formatting = false
   end
   lsp_keymaps(bufnr)

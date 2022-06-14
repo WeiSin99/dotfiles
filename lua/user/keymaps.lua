@@ -50,3 +50,13 @@ vim.keymap.set("v", "<leader>/", "<Plug>(comment_toggle_blockwise_visual)")
 -- Gitsigns
 keymap("n", "<leader>gd", "<cmd>Gitsigns preview_hunk<cr>", opts)
 keymap("n", "<leader>gr", "<cmd>Gitsigns reset_hunk<cr>", opts)
+
+keymap("i", "{<CR>", "{<CR>}<C-c>O", opts)
+keymap("i", "(<CR>", "(<CR>)<C-c>O", opts)
+keymap("i", "[<CR>", "[<CR>]<C-c>O", opts)
+keymap("i", "{", "{}<C-c>i", opts)
+keymap("i", "(", "()<C-c>i", opts)
+keymap("i", "[", "[]<C-c>i", opts)
+keymap("i", "{}", "{}", opts)
+keymap("i", "()", "()", opts)
+keymap("i", "[]", "[]", opts)
