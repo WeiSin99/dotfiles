@@ -22,25 +22,26 @@ material.setup({
     keywords = false, -- Enable italic keywords
     functions = false, -- Enable italic functions
     strings = false, -- Enable italic strings
-    variables = false -- Enable italic variables
+    variables = false, -- Enable italic variables
   },
 
   contrast_filetypes = { -- Specify which filetypes get the contrasted (darker) background
     "terminal", -- Darker terminal background
     "packer", -- Darker packer background
-    "qf" -- Darker qf list background
+    "qf", -- Darker qf list background
   },
 
   high_visibility = {
     lighter = true, -- Enable higher contrast text for lighter style
-    darker = true -- Enable higher contrast text for darker style
+    darker = true, -- Enable higher contrast text for darker style
   },
 
   disable = {
+    colored_cursor = true,
     borders = false, -- Disable borders between verticaly split windows
     background = false, -- Prevent the theme from setting the background (NeoVim then uses your teminal background)
     term_colors = false, -- Prevent the theme from setting terminal colors
-    eob_lines = false -- Hide the end-of-buffer lines
+    eob_lines = false, -- Hide the end-of-buffer lines
   },
 
   lualine_style = "default", -- Lualine style ( can be 'stealth' or 'default' )
@@ -52,10 +53,10 @@ material.setup({
     LspReferenceText = { bg = "#3b4261" },
     LspReferenceWrite = { bg = "#3b4261" },
     Visual = { bg = "#292b36" },
-    LineNr = { fg = "#5e6273", bg = "#090b10"  },
+    LineNr = { fg = "#5e6273", bg = "#090b10" },
     NvimTreeOpenedFile = { bg = "#292b36" },
     -- Comment = { fg = "#383c4a" },
-  } -- Overwrite highlights with your own
+  }, -- Overwrite highlights with your own
 })
 
 vim.g.material_style = "deep ocean"
@@ -68,7 +69,7 @@ end
 
 -- for theme that doesn't support document highlighting
 -- vim.cmd [[
-  -- hi LspReferenceRead guibg=#3b4261
-  -- hi LspReferenceText guibg=#3b4261
-  -- hi LspReferenceWrite guibg=#3b4261
+-- hi LspReferenceRead guibg=#3b4261
+-- hi LspReferenceText guibg=#3b4261
+-- hi LspReferenceWrite guibg=#3b4261
 -- ]]

@@ -1,38 +1,5 @@
 -- following options are the default
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
-vim.g.nvim_tree_icons = {
-  default = "",
-  symlink = "",
-  git = {
-    unstaged = "",
-    staged = "S",
-    unmerged = "",
-    renamed = "➜",
-    deleted = "",
-    untracked = "U",
-    ignored = "◌",
-  },
-  folder = {
-    arrow_open = "",
-    arrow_closed = "",
-    default = "",
-    open = "",
-    empty = "",
-    empty_open = "",
-    symlink = "",
-    symlink_open = "",
-  },
-}
-
-vim.g.nvim_tree_show_icons = {
-  git = 1,
-  folders = 1,
-  files = 1,
-  folder_arrows = 1,
-}
-
-vim.g.nvim_tree_git_hl = 1
-vim.g.nvim_tree_highlight_opened_files = 3
 
 local status_ok, nvim_tree = pcall(require, "nvim-tree")
 if not status_ok then
@@ -77,6 +44,8 @@ nvim_tree.setup({
     },
   },
   renderer = {
+    highlight_git = true,
+    highlight_opened_files = "all",
     indent_markers = {
       enable = false,
       icons = {
@@ -87,6 +56,35 @@ nvim_tree.setup({
     },
     icons = {
       webdev_colors = true,
+      show = {
+        git = true,
+        folder = true,
+        file = true,
+        folder_arrow = true,
+      },
+      glyphs = {
+        default = "",
+        symlink = "",
+        git = {
+          unstaged = "",
+          staged = "S",
+          unmerged = "",
+          renamed = "➜",
+          deleted = "",
+          untracked = "U",
+          ignored = "◌",
+        },
+        folder = {
+          arrow_open = "",
+          arrow_closed = "",
+          default = "",
+          open = "",
+          empty = "",
+          empty_open = "",
+          symlink = "",
+          symlink_open = "",
+        },
+      },
     },
   },
   hijack_directories = {
@@ -124,7 +122,7 @@ nvim_tree.setup({
   },
   git = {
     enable = true,
-    ignore = false,
+    ignore = true,
     timeout = 400,
   },
   actions = {
