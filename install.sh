@@ -11,5 +11,5 @@ done
 
 for f in `find . \( -iname \*.lua -o -iname \*.vim -o -iname stylua.toml \)`; do
     rm -rf ~/.config/nvim/$f
-    ln -s ~/dotfiles/$f ~/.config/nvim/$f
+    ln -s ~/Desktop/Software\ Engineering/Projects/dotfiles/$f ~/.config/nvim/$f
 done
