@@ -4,15 +4,18 @@ if not status_ok then
   return
 end
 
-bufferline.setup {
+bufferline.setup({
   options = {
     mode = "buffers",
     numbers = "ordinal",
-    close_command = "bdelete! %d",       -- can be a string | function, see "Mouse actions"
+    close_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
     right_mouse_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
-    left_mouse_command = "buffer %d",    -- can be a string | function, see "Mouse actions"
-    middle_mouse_command = nil,          -- can be a string | function, see "Mouse actions"
-    indicator_icon = "▎",
+    left_mouse_command = "buffer %d", -- can be a string | function, see "Mouse actions"
+    middle_mouse_command = nil, -- can be a string | function, see "Mouse actions"
+    indicator = {
+      icon = "▎",
+      style = "icon",
+    },
     buffer_close_icon = "",
     -- buffer_close_icon = '',
     modified_icon = "●",
@@ -36,7 +39,7 @@ bufferline.setup {
     diagnostics = "nvim_lsp",
     diagnostics_update_in_insert = false,
     diagnostics_indicator = function(count, level, diagnostics_dict, context)
-      return "("..count..")"
+      return "(" .. count .. ")"
     end,
     -- NOTE: this will be called a lot so don't do any heavy processing here
     --[[ custom_filter = function(buf_number, buf_numbers)
@@ -75,5 +78,5 @@ bufferline.setup {
       -- add custom logic
       return buffer_a.modified > buffer_b.modified
     end ]]
-  }
-}
+  },
+})

@@ -27,6 +27,7 @@ return packer.startup(function(use)
   use("nvim-lua/plenary.nvim")
   use("tpope/vim-surround")
   use("moll/vim-bbye")
+  use("rhysd/clever-f.vim")
 
   -- colorscheme
   use("sainnhe/gruvbox-material")
@@ -44,6 +45,7 @@ return packer.startup(function(use)
   -- LSP
   use("neovim/nvim-lspconfig")
   use("williamboman/nvim-lsp-installer")
+  use("Olical/conjure")
 
   -- Telescope
   use("nvim-telescope/telescope.nvim")
