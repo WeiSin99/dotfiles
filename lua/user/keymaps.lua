@@ -20,6 +20,10 @@ keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
+keymap("n", "<leader>rh", ":vertical resize -2<CR>", opts)
+keymap("n", "<leader>r;", ":vertical resize +2<CR>", opts)
+keymap("n", "<leader>rj", ":resize -2<CR>", opts)
+keymap("n", "<leader>rk", ":resize +2<CR>", opts)
 
 -- nvim-tree
 keymap("n", "<leader>b", ":NvimTreeToggle<CR>", opts)

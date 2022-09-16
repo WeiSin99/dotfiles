@@ -90,6 +90,9 @@ M.on_attach = function(client, bufnr)
   if client.name == "jsonls" then
     client.resolved_capabilities.document_formatting = false
   end
+  if client.name == "clojure_lsp" then
+    client.resolved_capabilities.document_formatting = false
+  end
   lsp_keymaps(bufnr)
   lsp_highlight_document(client)
 end
