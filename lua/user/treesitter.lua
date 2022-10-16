@@ -4,8 +4,8 @@ if not status_ok then
   return
 end
 
-configs.setup {
-  ensure_installed = { "html", "javascript", "python", "lua" },
+configs.setup({
+  ensure_installed = { "html", "javascript", "python", "lua", "clojure" },
   sync_install = false,
   ignore_install = { "" }, -- List of parsers to ignore installing
   highlight = {
@@ -13,9 +13,9 @@ configs.setup {
     disable = { "" }, -- list of language that will be disabled
     additional_vim_regex_highlighting = true,
   },
-  indent = { enable = true, disable = { } },
+  indent = { enable = true, disable = {} },
   context_commentstring = {
     enable = true,
     enable_autocmd = false,
   },
-}
+})
