@@ -43,7 +43,12 @@ return packer.startup(function(use)
   -- LSP
   use("neovim/nvim-lspconfig")
   use("williamboman/nvim-lsp-installer")
-  use("Olical/conjure")
+
+  -- Problem in commit fb7a3e40d4bae484bd6616e5f842616a815c73e7, Call bufload() on new log buffer causing error to be shown on REPL
+  use({
+    "Olical/conjure",
+    commit = "bef8004d17f00b997a87d9b02b62f52664b2f9b9",
+  })
 
   -- Telescope
   use("nvim-telescope/telescope.nvim")
