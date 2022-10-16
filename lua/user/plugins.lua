@@ -30,9 +30,7 @@ return packer.startup(function(use)
   use("rhysd/clever-f.vim")
 
   -- colorscheme
-  use("sainnhe/gruvbox-material")
   use("marko-cerovac/material.nvim")
-  use("folke/tokyonight.nvim")
 
   -- autocompletion
   use("hrsh7th/nvim-cmp")
