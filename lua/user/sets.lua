@@ -17,6 +17,7 @@ local options = {
   signcolumn = "yes",
   splitright = true,
   showmode = false,
+  cursorline = true,
 }
 
 for k, v in pairs(options) do

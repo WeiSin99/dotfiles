@@ -20,6 +20,7 @@ keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
+keymap("n", "<leader><C-j>", "<C-w>J", opts)
 keymap("n", "<leader>rh", ":vertical resize -2<CR>", opts)
 keymap("n", "<leader>rl", ":vertical resize +2<CR>", opts)
 keymap("n", "<leader>rj", ":resize -2<CR>", opts)
@@ -68,3 +69,10 @@ keymap("i", "[]", "[]", opts)
 keymap("i", "{{", "{<C-c>", opts)
 keymap("i", "((", "(<C-c>", opts)
 keymap("i", "[[", "[<C-c>", opts)
+
+keymap(
+  "n",
+  "<leader>cj",
+  ":NvimTreeToggle<CR> :NvimTreeToggle<CR> <C-w>l <C-w>j :resize -25<CR> :set winfixheight<CR> <C-w>k",
+  opts
+)
