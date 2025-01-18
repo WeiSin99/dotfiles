@@ -20,7 +20,7 @@ null_ls.setup({
     }),
     formatting.black,
     formatting.stylua,
-    diagnostics.eslint,
+    --[[ diagnostics.eslint, ]]
   },
   on_attach = function(client)
     if client.resolved_capabilities.document_formatting then
