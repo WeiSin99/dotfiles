@@ -4,10 +4,6 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = {
     fzf_bin = 'fzf',
-    hls = {
-      border = "Function",
-      preview_border = "Function",
-    },
     winopts = {
       no_hints = true,
     },
