@@ -102,11 +102,55 @@ return {
           }
         },
       },
-      ts_ls = {}
+      vtsls = {
+        -- explicitly add default filetypes, so that we can extend
+        -- them in related extras
+        filetypes = {
+          "javascript",
+          "javascriptreact",
+          "javascript.jsx",
+          "typescript",
+          "typescriptreact",
+          "typescript.tsx",
+        },
+        settings = {
+          complete_function_calls = true,
+          vtsls = {
+            enableMoveToFileCodeAction = true,
+            autoUseWorkspaceTsdk = true,
+            experimental = {
+              maxInlayHintLength = 30,
+              completion = {
+                enableServerSideFuzzyMatch = true,
+              },
+            },
+          },
+          typescript = {
+            updateImportsOnFileMove = { enabled = "always" },
+            suggest = {
+              completeFunctionCalls = true,
+            },
+            inlayHints = {
+              enumMemberValues = { enabled = true },
+              functionLikeReturnTypes = { enabled = true },
+              parameterNames = { enabled = "literals" },
+              parameterTypes = { enabled = true },
+              propertyDeclarationTypes = { enabled = true },
+              variableTypes = { enabled = false },
+            },
+          },
+        },
+      },
     }
 
+    -- convert keys in servers into an array as an list of lsp to install
+    local ensure_installed = {}
+    for key, _ in pairs(servers) do
+      table.insert(ensure_installed, key)
+    end
+
     require("mason-lspconfig").setup({
-      ensure_installed = { "lua_ls", "ts_ls" },
+      ensure_installed = ensure_installed,
       automatic_installation = false,
       handlers = {
         function(server_name)
