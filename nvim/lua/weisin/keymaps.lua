@@ -13,6 +13,8 @@ map("n", "<leader>Y", 'gg"+yG')
 map("v", "J", ":m '>+1<CR>gv=gv")
 map("v", "K", ":m '<-2<CR>gv=gv")
 
+map("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear highlights on search" })
+
 -- windows
 map("n", "<C-h>", "<C-w>h")
 map("n", "<C-j>", "<C-w>j")
