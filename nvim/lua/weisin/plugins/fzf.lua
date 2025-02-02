@@ -1,9 +1,9 @@
 return {
   "ibhagwan/fzf-lua",
-  event = 'VimEnter',
+  event = "VimEnter",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = {
-    fzf_bin = 'fzf',
+    fzf_bin = "fzf",
     winopts = {
       no_hints = true,
     },
@@ -29,7 +29,7 @@ return {
   keys = {
     -- find
     { "<leader>fb", "<cmd>FzfLua buffers sort_mru=true sort_lastused=true<cr>", desc = "[F]ind [B]uffers" },
-    { "<leader>fp", "<cmd>FzfLua files<cr>" , desc = "[F]ind [P]roject (cwd)" },
+    { "<leader>fp", "<cmd>FzfLua files<cr>", desc = "[F]ind [P]roject (cwd)" },
     { "<leader>fg", "<cmd>FzfLua git_files<cr>", desc = "[F]ind [G]it Files" },
     -- search
     { "<leader>sb", "<cmd>FzfLua grep_curbuf<cr>", desc = "[S]earch [B]uffer" },
@@ -38,5 +38,5 @@ return {
     -- git
     { "<leader>gc", "<cmd>FzfLua git_commits<CR>", desc = "Commits" },
     { "<leader>gs", "<cmd>FzfLua git_status<CR>", desc = "Status" },
-  }
+  },
 }
