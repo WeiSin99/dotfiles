@@ -162,6 +162,11 @@ return {
       automatic_installation = false,
       handlers = {
         function(server_name)
+          -- linters are handled by nvim-lint
+          if vim.tbl_contains(linters, server_name) then
+            return
+          end
+
           local server = servers[server_name] or {}
 
           server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
