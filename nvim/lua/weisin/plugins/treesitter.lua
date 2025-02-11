@@ -1,12 +1,13 @@
 return {
-  "nvim-treesitter/nvim-treesitter",
-  build = ":TSUpdate",
-  config = function ()
-    local configs = require("nvim-treesitter.configs")
+  'nvim-treesitter/nvim-treesitter',
+  build = ':TSUpdate',
+  event = 'VeryLazy',
+  config = function()
+    local configs = require('nvim-treesitter.configs')
 
     configs.setup({
       -- A list of parser names, or "all" (the listed parsers MUST always be installed)
-      ensure_installed = { "lua", "javascript" },
+      ensure_installed = { 'lua', 'javascript' },
 
       -- Install parsers synchronously (only applied to `ensure_installed`)
       sync_install = false,
@@ -23,7 +24,7 @@ return {
         -- Using this option may slow down your editor, and you may see some duplicate highlights.
         -- Instead of true it can also be a list of languages
         additional_vim_regex_highlighting = false,
-      }
+      },
     })
 
     -- use treesitter folding, this will fold all foldable area when file is open
@@ -31,12 +32,12 @@ return {
     vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 
     -- create an autocommand to unfold everything when file is open
-    vim.api.nvim_create_autocmd({'BufReadPost', 'FileReadPost'}, {
+    vim.api.nvim_create_autocmd({ 'BufReadPost', 'FileReadPost' }, {
       desc = 'Unfold all foldable acre when file is open',
       group = vim.api.nvim_create_augroup('treesitter-folding', { clear = true }),
       callback = function()
-        vim.api.nvim_feedkeys("zR", "n", true)
+        vim.api.nvim_feedkeys('zR', 'n', true)
       end,
     })
-  end
+  end,
 }
