@@ -27,17 +27,18 @@ return {
       },
     })
 
+    -- TODO: look for better folding method
     -- use treesitter folding, this will fold all foldable area when file is open
-    vim.wo.foldmethod = 'expr'
-    vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-
-    -- create an autocommand to unfold everything when file is open
-    vim.api.nvim_create_autocmd({ 'BufReadPost', 'FileReadPost' }, {
-      desc = 'Unfold all foldable acre when file is open',
-      group = vim.api.nvim_create_augroup('treesitter-folding', { clear = true }),
-      callback = function()
-        vim.api.nvim_feedkeys('zR', 'n', true)
-      end,
-    })
+    -- vim.wo.foldmethod = 'expr'
+    -- vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+    --
+    -- -- create an autocommand to unfold everything when file is open
+    -- vim.api.nvim_create_autocmd({ 'BufReadPost', 'FileReadPost' }, {
+    --   desc = 'Unfold all foldable acre when file is open',
+    --   group = vim.api.nvim_create_augroup('treesitter-folding', { clear = true }),
+    --   callback = function()
+    --     vim.api.nvim_feedkeys('zR', 'n', true)
+    --   end,
+    -- })
   end,
 }

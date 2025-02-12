@@ -24,6 +24,7 @@ return {
           fzf = true,
           mason = true,
           treesitter = true,
+          gitsigns = true,
           mini = {
             enabled = true,
             indentscope_color = '', -- catppuccin color (eg. `lavender`) Default: text

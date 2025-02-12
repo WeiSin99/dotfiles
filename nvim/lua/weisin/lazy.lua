@@ -15,6 +15,10 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-  { import = "weisin.plugins" },
-  { import = "weisin.plugins.lsp" }
+  { import = 'weisin.plugins' },
+  { import = 'weisin.plugins.lsp' },
+}, {
+  change_detection = {
+    notify = false,
+  },
 })
