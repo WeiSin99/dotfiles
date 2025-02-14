@@ -26,5 +26,7 @@ return {
         width_preview = 30,
       },
     })
+
+    require('mini.icons').setup({})
   end,
 }

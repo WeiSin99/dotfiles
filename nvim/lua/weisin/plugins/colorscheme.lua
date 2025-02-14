@@ -8,7 +8,8 @@ return {
         style = 'night', -- or "day" for lighter variant
         transparent = true, -- Enable transparency if you want
       })
-      -- vim.cmd([[colorscheme tokyonight]])
+
+      -- vim.cmd.colorscheme('tokyonight')
     end,
   },
   {
