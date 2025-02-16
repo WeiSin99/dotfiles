@@ -44,7 +44,7 @@ return {
 
     -- find
     { '<leader>fb', '<cmd>lua Snacks.picker.buffers()<cr>', desc = '[F]ind [B]uffers' },
-    { '<leader>fp', '<cmd>lua Snacks.picker.files()<cr>', desc = '[F]ind [P]roject (cwd)' },
+    { '<leader>fp', '<cmd>lua Snacks.picker.files({ hidden = true })<cr>', desc = '[F]ind [P]roject (cwd)' },
 
     -- search
     { '<leader>sb', '<cmd>lua Snacks.picker.lines()<cr>', desc = '[S]earch [B]uffer' },
