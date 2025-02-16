@@ -1,7 +1,7 @@
 local options = {
   updatetime = 300,
   termguicolors = true, -- true color support
-  guicursor = "", -- only use block cursor
+  guicursor = '', -- only use block cursor
   number = true, -- show line number
   relativenumber = true, -- show line number relative the the line your cursor at
   scrolloff = 8, -- minimum number of lines above and below cursor when scrolling
@@ -11,7 +11,7 @@ local options = {
   expandtab = true, -- replace tab with spaces
   wrap = false, -- disable line wrap
   smartindent = true, -- auto indent when starting a new line
-  signcolumn = "yes", -- always show signcolumn, otherwise text would shift
+  signcolumn = 'yes', -- always show signcolumn, otherwise text would shift
   splitright = true, -- put new windows to the right of the current
   showmode = false, -- do not show the mode
   cursorline = true, -- enable highlighting of the current line
@@ -20,9 +20,12 @@ local options = {
     tab = '» ',
     trail = '·',
     nbsp = '␣',
-  }
+  },
 }
 
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
+
+-- Fix markdown indentation settings
+vim.g.markdown_recommended_style = 0

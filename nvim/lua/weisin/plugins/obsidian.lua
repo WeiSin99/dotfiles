@@ -20,7 +20,7 @@ return {
     completion = {
       min_chars = 1,
     },
-    notes_subdir = 'test',
+    notes_subdir = '02 - Fleeting Notes',
     new_notes_location = 'notes_subdir',
     workspaces = {
       {
@@ -30,6 +30,16 @@ return {
     },
     picker = {
       name = 'telescope.nvim',
+    },
+    daily_notes = {
+      folder = '01 - Daily Notes',
+      date_format = '%Y-%m-%d',
+      alias_format = nil,
+      default_tags = {},
+      template = 'daily-note.md',
+    },
+    templates = {
+      folder = 'templates',
     },
     mappings = {
       -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
@@ -54,7 +64,13 @@ return {
       return formatted_title
     end,
     note_frontmatter_func = function(note)
-      local out = { id = note.id, aliases = note.aliases, tags = note.tags }
+      local aliases = vim.tbl_filter(function(alias)
+        return alias ~= note.id
+      end, note.aliases)
+
+      local today = os.date('%Y-%m-%d')
+
+      local out = { id = note.id, aliases = aliases, tags = note.tags, related = {}, date_created = today }
 
       -- `note.metadata` contains any manually added fields in the frontmatter.
       -- So here we just make sure those fields are kept in the frontmatter.
@@ -64,11 +80,16 @@ return {
         end
       end
 
+      out.last_updated = today
+
       return out
     end,
   },
   keys = {
     -- find
+    { '<leader>ol', '<cmd>ObsidianLinks<cr>', desc = 'Obsidian links' },
     { '<leader>ob', '<cmd>ObsidianBacklinks<cr>', desc = 'Obsidian backlinks' },
+    { '<leader>ot', '<cmd>ObsidianToday<cr>', desc = 'Obsidian Today' },
+    { '<leader>on', '<cmd>ObsidianNew<cr>', desc = 'ObsidianNew' },
   },
 }
