@@ -45,10 +45,14 @@ return {
             return {
               Whitespace = { fg = '#62647D' },
               LineNr = { fg = '#62647D' },
+              Visual = { bg = '#575969' },
               LspReferenceRead = { bg = '#62647D' },
               LspReferenceText = { bg = '#62647D' },
               LspReferenceWrite = { bg = '#62647D' },
               MiniFilesCursorLine = { bg = '#62647D' },
+              SnacksPickerPreviewCursorLine = { bg = '#62647D' },
+              TelescopePreviewMatch = { bg = '#62647D' },
+              Search = { link = 'CurSearch' },
             }
           end,
         },

@@ -1,6 +1,5 @@
 return {
   'ibhagwan/fzf-lua',
-  event = 'VimEnter',
   enabled = false,
   opts = {
     fzf_bin = 'fzf',
