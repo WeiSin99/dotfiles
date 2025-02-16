@@ -49,6 +49,6 @@ return {
     -- search
     { '<leader>sb', '<cmd>lua Snacks.picker.lines()<cr>', desc = '[S]earch [B]uffer' },
     { '<leader>sp', '<cmd>lua Snacks.picker.grep()<cr>', desc = '[S]earch [P]roject (cwd)' },
-    { '<leader>sH', '<cmd>lua Snacks.picker.highlights()<cr>', desc = 'Search Highlight Groups' },
+    { '<leader>shl', '<cmd>lua Snacks.picker.highlights()<cr>', desc = 'Search Highlight Groups' },
   },
 }
