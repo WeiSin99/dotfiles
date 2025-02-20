@@ -43,6 +43,7 @@ end
 return {
   'nvim-lualine/lualine.nvim',
   event = 'VeryLazy',
+  dependencies = { 'nvim-tree/nvim-web-devicons' },
   opts = {
     options = {
       theme = 'auto',
@@ -53,7 +54,7 @@ return {
       lualine_b = { { 'branch', color = { gui = '' } } },
       lualine_c = {
         { 'filetype', icon_only = true, separator = '', padding = { left = 1, right = 0 } },
-        { 'filename' },
+        { 'filename', path = 1 },
         { 'diff' },
       },
       lualine_x = { 'diagnostics' },

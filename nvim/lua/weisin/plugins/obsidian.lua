@@ -51,26 +51,30 @@ return {
       },
     },
     note_id_func = function(title)
-      local formatted_title = ''
+      -- Create note IDs in a Zettelkasten format with a concatnated time string and a suffix.
+      local suffix = ''
       if title ~= nil then
         -- If title is given, transform it into valid file name.
-        formatted_title = title:gsub(' ', '-'):gsub('[^A-Za-z0-9-]', ''):lower()
+        suffix = title:gsub(' ', '-'):gsub('[^A-Za-z0-9-]', ''):lower()
       else
         -- If title is nil, just add 4 random uppercase letters to the suffix.
         for _ = 1, 4 do
-          formatted_title = formatted_title .. string.char(math.random(65, 90))
+          suffix = suffix .. string.char(math.random(65, 90))
         end
       end
-      return formatted_title
+      return os.date('%Y%m%d%H%M%S') .. '-' .. suffix
     end,
     note_frontmatter_func = function(note)
+      local now = os.date('%Y-%m-%d %H:%M:%S')
+      local displayName = table.concat(vim.split(note.id, '-'), '-', 2)
+
       local aliases = vim.tbl_filter(function(alias)
-        return alias ~= note.id
+        return alias ~= note.id and alias ~= note.title and alias ~= displayName
       end, note.aliases)
+      table.insert(aliases, displayName)
 
-      local today = os.date('%Y-%m-%d')
-
-      local out = { id = note.id, aliases = aliases, tags = note.tags, related = {}, date_created = today }
+      local out =
+        { id = note.id, title = displayName, aliases = aliases, tags = note.tags, related = {}, created_at = now }
 
       -- `note.metadata` contains any manually added fields in the frontmatter.
       -- So here we just make sure those fields are kept in the frontmatter.
@@ -80,7 +84,7 @@ return {
         end
       end
 
-      out.last_updated = today
+      out.last_updated = now
 
       return out
     end,
