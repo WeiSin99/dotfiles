@@ -29,7 +29,7 @@ return {
     require('mini.files').setup({
       content = {
         filter = function(entry)
-          return entry.name ~= '.DS_Store' and entry.name ~= '.obsidian'
+          return entry.name ~= '.DS_Store' and entry.name ~= '.git' and entry.name ~= '.obsidian'
         end,
         -- In which order to show file system entries
         sort = function(entries)
