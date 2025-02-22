@@ -1,3 +1,10 @@
+local yank_relative_path = function()
+  local path = MiniFiles.get_fs_entry().path
+  local relative_path = vim.fn.fnamemodify(path, ':.')
+  vim.fn.setreg('+', relative_path)
+  print('Copied: ' .. relative_path)
+end
+
 return {
   'echasnovski/mini.nvim',
   version = false,
@@ -64,5 +71,12 @@ return {
     })
 
     require('mini.icons').setup({})
+
+    vim.api.nvim_create_autocmd('User', {
+      pattern = 'MiniFilesBufferCreate',
+      callback = function(args)
+        vim.keymap.set('n', '<leader>py', yank_relative_path, { buffer = args.data.buf_id })
+      end,
+    })
   end,
 }

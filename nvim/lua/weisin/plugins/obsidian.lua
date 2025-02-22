@@ -66,15 +66,21 @@ return {
     end,
     note_frontmatter_func = function(note)
       local now = os.date('%Y-%m-%d %H:%M:%S')
-      local displayName = table.concat(vim.split(note.id, '-'), '-', 2)
+      local split_note_id = vim.split(note.id, '-')
+
+      local displayName = nil
+      if #split_note_id > 1 and #split_note_id[1] == 14 then
+        displayName = table.concat(split_note_id, '-', 2)
+      else
+        displayName = note.id
+      end
 
       local aliases = vim.tbl_filter(function(alias)
         return alias ~= note.id and alias ~= note.title and alias ~= displayName
       end, note.aliases)
       table.insert(aliases, displayName)
 
-      local out =
-        { id = note.id, title = displayName, aliases = aliases, tags = note.tags, related = {}, created_at = now }
+      local out = { id = note.id, aliases = aliases, tags = note.tags, related = {}, created_at = now }
 
       -- `note.metadata` contains any manually added fields in the frontmatter.
       -- So here we just make sure those fields are kept in the frontmatter.
@@ -84,6 +90,7 @@ return {
         end
       end
 
+      out.title = displayName
       out.last_updated = now
 
       return out
@@ -94,6 +101,10 @@ return {
     { '<leader>ol', '<cmd>ObsidianLinks<cr>', desc = 'Obsidian links' },
     { '<leader>ob', '<cmd>ObsidianBacklinks<cr>', desc = 'Obsidian backlinks' },
     { '<leader>ot', '<cmd>ObsidianToday<cr>', desc = 'Obsidian Today' },
-    { '<leader>on', '<cmd>ObsidianNew<cr>', desc = 'ObsidianNew' },
+    { '<leader>onf', '<cmd>ObsidianNew<cr>', desc = 'ObsidianNew' },
+    { '<leader>onl', '<cmd>ObsidianNew<cr> 03 - Literature Notes/', desc = 'ObsidianNew literature note' },
+    { '<leader>onp', '<cmd>ObsidianNew<cr> 04 - Projects/', desc = 'ObsidianNew project note' },
+    { '<leader>ona', '<cmd>ObsidianNew<cr> 05 - Areas/', desc = 'ObsidianNew area note' },
+    { '<leader>onz', '<cmd>ObsidianNew<cr> 06 - Permanent Notes/', desc = 'ObsidianNew permanent note' },
   },
 }
