@@ -51,26 +51,36 @@ return {
       },
     },
     note_id_func = function(title)
-      local formatted_title = ''
+      -- Create note IDs in a Zettelkasten format with a concatnated time string and a suffix.
+      local suffix = ''
       if title ~= nil then
         -- If title is given, transform it into valid file name.
-        formatted_title = title:gsub(' ', '-'):gsub('[^A-Za-z0-9-]', ''):lower()
+        suffix = title:gsub(' ', '-'):gsub('[^A-Za-z0-9-]', ''):lower()
       else
         -- If title is nil, just add 4 random uppercase letters to the suffix.
         for _ = 1, 4 do
-          formatted_title = formatted_title .. string.char(math.random(65, 90))
+          suffix = suffix .. string.char(math.random(65, 90))
         end
       end
-      return formatted_title
+      return os.date('%Y%m%d%H%M%S') .. '-' .. suffix
     end,
     note_frontmatter_func = function(note)
+      local now = os.date('%Y-%m-%d %H:%M:%S')
+      local split_note_id = vim.split(note.id, '-')
+
+      local displayName = nil
+      if #split_note_id > 1 and #split_note_id[1] == 14 then
+        displayName = table.concat(split_note_id, '-', 2)
+      else
+        displayName = note.id
+      end
+
       local aliases = vim.tbl_filter(function(alias)
-        return alias ~= note.id
+        return alias ~= note.id and alias ~= note.title and alias ~= displayName
       end, note.aliases)
+      table.insert(aliases, displayName)
 
-      local today = os.date('%Y-%m-%d')
-
-      local out = { id = note.id, aliases = aliases, tags = note.tags, related = {}, date_created = today }
+      local out = { id = note.id, aliases = aliases, tags = note.tags, related = {}, created_at = now }
 
       -- `note.metadata` contains any manually added fields in the frontmatter.
       -- So here we just make sure those fields are kept in the frontmatter.
@@ -80,7 +90,8 @@ return {
         end
       end
 
-      out.last_updated = today
+      out.title = displayName
+      out.last_updated = now
 
       return out
     end,
@@ -90,6 +101,10 @@ return {
     { '<leader>ol', '<cmd>ObsidianLinks<cr>', desc = 'Obsidian links' },
     { '<leader>ob', '<cmd>ObsidianBacklinks<cr>', desc = 'Obsidian backlinks' },
     { '<leader>ot', '<cmd>ObsidianToday<cr>', desc = 'Obsidian Today' },
-    { '<leader>on', '<cmd>ObsidianNew<cr>', desc = 'ObsidianNew' },
+    { '<leader>onf', '<cmd>ObsidianNew<cr>', desc = 'ObsidianNew' },
+    { '<leader>onl', '<cmd>ObsidianNew<cr> 03 - Literature Notes/', desc = 'ObsidianNew literature note' },
+    { '<leader>onp', '<cmd>ObsidianNew<cr> 04 - Projects/', desc = 'ObsidianNew project note' },
+    { '<leader>ona', '<cmd>ObsidianNew<cr> 05 - Areas/', desc = 'ObsidianNew area note' },
+    { '<leader>onz', '<cmd>ObsidianNew<cr> 06 - Permanent Notes/', desc = 'ObsidianNew permanent note' },
   },
 }
