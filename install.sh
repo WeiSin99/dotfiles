@@ -19,7 +19,7 @@ fi
 if [[ -f ~/.config/tmux/tmux.conf ]]; then
   rm ~/.config/tmux/tmux.conf
 fi
-ln -s "$SCRIPT_DIR/scripts/tmux-sessionizer" ~/.local/bin/tmux-sessionizer
+ln -s "$SCRIPT_DIR/tmux/tmux.conf" ~/.config/tmux/tmux.conf
 
 if [[ ! -d ~/.local/bin ]]; then
   mkdir -p ~/.local/bin
