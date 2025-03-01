@@ -2,37 +2,30 @@
 
 SCRIPT_DIR=$(dirname "$(realpath "$0")")
 
+create_symlink() {
+  local src=$1
+  local target=$2
 
-if [[ -d ~/.config/nvim ]]; then
-  rm ~/.config/nvim
-fi
-ln -s "$SCRIPT_DIR/nvim" ~/.config/nvim
+  if [[ -L $target || -f $target || -d $target ]]; then
+    rm -rf "$target"  # Remove existing file, directory, or symlink
+  fi
 
-if [[ -d ~/.config/bat ]]; then
-  rm ~/.config/bat
-fi
-ln -s "$SCRIPT_DIR/bat" ~/.config/bat
+  ln -s "$src" "$target"
+}
 
-if [[ ! -d ~/.config/tmux ]]; then
-  mkdir -p ~/.config/tmux
-fi
-if [[ -f ~/.config/tmux/tmux.conf ]]; then
-  rm ~/.config/tmux/tmux.conf
-fi
-ln -s "$SCRIPT_DIR/tmux/tmux.conf" ~/.config/tmux/tmux.conf
+ensure_directory() {
+  local dir=$1
 
-if [[ ! -d ~/.local/bin ]]; then
-  mkdir -p ~/.local/bin
-fi
-if [[ -f ~/.local/bin/tmux-sessionizer ]]; then
-  rm ~/.local/bin/tmux-sessionizer
-fi
-ln -s "$SCRIPT_DIR/scripts/tmux-sessionizer" ~/.local/bin/tmux-sessionizer
+  [[ ! -d $dir ]] && mkdir -p "$dir"
+}
 
-if [[ ! -d ~/.config/lazygit ]]; then
-  mkdir -p ~/.config/lazygit
-fi
-if [[ -f ~/.config/lazygit/config.yml ]]; then
-  rm ~/.config/lazygit/config.yml
-fi
-ln -s "$SCRIPT_DIR/lazygit/config.yml" ~/.config/lazygit/config.yml
+ensure_directory "$HOME/.local/bin"
+ensure_directory "$HOME/.config/tmux"
+ensure_directory "$HOME/.config/lazygit"
+
+create_symlink "$SCRIPT_DIR/nvim" "$HOME/.config/nvim"
+create_symlink "$SCRIPT_DIR/bat" "$HOME/.config/bat"
+create_symlink "$SCRIPT_DIR/tmux/tmux.conf" "$HOME/.config/tmux/tmux.conf"
+create_symlink "$SCRIPT_DIR/scripts/tmux-sessionizer" "$HOME/.local/bin/tmux-sessionizer"
+create_symlink "$SCRIPT_DIR/lazygit/config.yml" "$HOME/.config/lazygit/config.yml"
+
