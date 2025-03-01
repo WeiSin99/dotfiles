@@ -23,6 +23,7 @@ ensure_directory "$HOME/.local/bin"
 ensure_directory "$HOME/.config/tmux"
 ensure_directory "$HOME/.config/lazygit"
 
+create_symlink "$SCRIPT_DIR/.zshrc" "$HOME/.zshrc"
 create_symlink "$SCRIPT_DIR/nvim" "$HOME/.config/nvim"
 create_symlink "$SCRIPT_DIR/bat" "$HOME/.config/bat"
 create_symlink "$SCRIPT_DIR/tmux/tmux.conf" "$HOME/.config/tmux/tmux.conf"
