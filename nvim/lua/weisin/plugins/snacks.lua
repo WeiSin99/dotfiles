@@ -50,6 +50,16 @@ return {
       '<cmd>lua Snacks.picker.files({ hidden = true, ignored = true })<cr>',
       desc = '[F]ind [P]roject all (cwd)',
     },
+    {
+      '<leader>fc',
+      '<cmd>lua Snacks.picker.files({ cwd = "/Users/weisin/software-engineering/projects/dotfiles" })<cr>',
+      desc = 'Find Config File',
+    },
+    {
+      '<leader>fn',
+      '<cmd>lua Snacks.picker.files({ cwd = "/Users/weisin/Documents/ws-vault" })<cr>',
+      desc = 'Find notes',
+    },
 
     -- search
     { '<leader>sb', '<cmd>lua Snacks.picker.lines()<cr>', desc = '[S]earch [B]uffer' },

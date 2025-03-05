@@ -16,6 +16,8 @@ map('v', 'K', ":m '<-2<CR>gv=gv")
 map('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear highlights on search' })
 
 -- windows
+map('n', '<leader>-', '<C-w>s', { desc = 'Split Window Below', remap = true })
+map('n', '<leader>|', '<C-w>v', { desc = 'Split Window Right', remap = true })
 map('n', '<C-h>', '<C-w>h')
 map('n', '<C-j>', '<C-w>j')
 map('n', '<C-k>', '<C-w>k')
