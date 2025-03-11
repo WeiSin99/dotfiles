@@ -148,6 +148,7 @@ return {
         },
       },
       marksman = {},
+      graphql = {},
     }
 
     local formatters = {
@@ -157,6 +158,7 @@ return {
 
     local linters = {
       'eslint',
+      'eslint_d',
     }
 
     -- convert keys in servers into an array as an list of lsp to install
