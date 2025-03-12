@@ -1,2 +1,4 @@
 gui:
   commitAuthorShortLength: 8
+os:
+  editPreset: "nvim-remote"
