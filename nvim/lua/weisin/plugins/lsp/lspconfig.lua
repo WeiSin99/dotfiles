@@ -48,6 +48,9 @@ return {
         -- or a suggestion from your LSP for this to activate.
         map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
 
+        -- show diagnostics in a floating window
+        map('<leader>ed', vim.diagnostic.open_float, 'Diagnostics floating window')
+
         -- WARN: This is not Goto Definition, this is Goto Declaration.
         --  For example, in C this would take you to the header.
         map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
@@ -88,7 +91,10 @@ return {
     for type, icon in pairs(signs) do
       diagnostic_signs[vim.diagnostic.severity[type]] = icon
     end
-    vim.diagnostic.config({ signs = { text = diagnostic_signs } })
+    vim.diagnostic.config({
+      virtual_text = false,
+      signs = { text = diagnostic_signs },
+    })
 
     -- LSP servers and clients are able to communicate to each other what features they support.
     --  By default, Neovim doesn't support everything that is in the LSP specification.

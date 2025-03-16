@@ -19,5 +19,13 @@ return {
       lsp_fallback = true,
       timeout_ms = 1000,
     },
+    formatters = {
+      prettier = {
+        require_cwd = true,
+      },
+      eslint_d = {
+        require_cwd = true,
+      },
+    },
   },
 }
