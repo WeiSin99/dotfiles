@@ -4,8 +4,8 @@ return {
   lazy = true,
   -- load obsidian.nvim only for markdown files that is in the obsidian vault
   event = {
-    'BufReadPre ' .. vim.fn.expand('~') .. '/Documents/ws-vault/*.md',
-    'BufNewFile ' .. vim.fn.expand('~') .. '/Documents/ws-vault/*.md',
+    'BufReadPre ' .. vim.fn.expand('~') .. '/Library/Mobile Documents/iCloud~md~obsidian/Documents/ws-vault/*.md',
+    'BufNewFile ' .. vim.fn.expand('~') .. '/Library/Mobile Documents/iCloud~md~obsidian/Documents/ws-vault/*.md',
   },
   dependencies = {
     'nvim-lua/plenary.nvim',
@@ -25,7 +25,7 @@ return {
     workspaces = {
       {
         name = 'My vault',
-        path = '~/Documents/ws-vault',
+        path = '~/Library/Mobile Documents/iCloud~md~obsidian/Documents/ws-vault',
       },
     },
     picker = {
