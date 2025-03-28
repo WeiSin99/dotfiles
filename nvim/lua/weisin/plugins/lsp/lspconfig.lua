@@ -153,6 +153,8 @@ return {
           },
         },
       },
+      emmet_ls = {},
+      tailwindcss = {},
       marksman = {},
       graphql = {},
     }
