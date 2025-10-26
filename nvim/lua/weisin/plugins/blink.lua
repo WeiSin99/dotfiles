@@ -17,7 +17,7 @@ return {
       documentation = { auto_show = true, auto_show_delay_ms = 500 },
     },
     sources = {
-      default = { 'lazydev', 'obsidian', 'obsidian_new', 'obsidian_tags', 'lsp', 'path', 'snippets', 'buffer' },
+      default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
       providers = {
         lazydev = {
           name = 'LazyDev',
@@ -25,9 +25,6 @@ return {
           -- make lazydev completions top priority (see `:h blink.cmp`)
           score_offset = 100,
         },
-        obsidian = { name = 'obsidian', module = 'blink.compat.source' },
-        obsidian_new = { name = 'obsidian_new', module = 'blink.compat.source' },
-        obsidian_tags = { name = 'obsidian_tags', module = 'blink.compat.source' },
       },
     },
   },
