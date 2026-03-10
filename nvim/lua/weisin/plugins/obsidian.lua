@@ -17,7 +17,7 @@ return {
       },
     },
     notes_subdir = '00 - Inbox',
-    new_notes_loction = 'notes_subdir',
+    new_notes_location = 'notes_subdir',
     daily_notes = {
       folder = '01 - Daily Notes',
       date_format = '%Y-%m-%d',
@@ -29,7 +29,7 @@ return {
       folder = 'templates',
     },
     frontmatter = {
-      sort = { 'id', 'title', 'aliases', 'tags', 'related', 'last_updated', 'created_at' },
+      sort = { 'id', 'title', 'aliases', 'topics', 'related', 'tags', 'last_updated', 'created_at' },
       func = function(note)
         local now = os.date('%Y-%m-%d %H:%M:%S') --[[@as string]]
 
@@ -38,7 +38,7 @@ return {
         end, note.aliases)
         table.insert(aliases, note.path.stem)
 
-        local out = { aliases = aliases, tags = note.tags, related = {}, created_at = now }
+        local out = { aliases = aliases, topics = {}, related = {}, tags = note.tags, created_at = now }
 
         -- `note.metadata` contains any manually added fields in the frontmatter.
         -- So here we just make sure those fields are kept in the frontmatter.
@@ -66,7 +66,9 @@ return {
   keys = {
     { '<leader>ol', '<cmd>Obsidian links<cr>', desc = 'Obsidian links' },
     { '<leader>ob', '<cmd>Obsidian backlinks<cr>', desc = 'Obsidian backlinks' },
-    { '<leader>ot', '<cmd>Obsidian today<cr>', desc = 'Obsidian Today' },
+    { '<leader>ot', '<cmd>Obsidian today<cr>', desc = 'Obsidian today' },
+    { '<leader>od', '<cmd>Obsidian dailies<cr>', desc = 'Obsidian dailies' },
+    { '<leader>os', '<cmd>Obsidian search<cr>', desc = 'Obsidian search' },
     { '<leader>on', '<cmd>Obsidian new<cr>', desc = 'ObsidianNew' },
   },
 }

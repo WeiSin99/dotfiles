@@ -7,7 +7,18 @@ return {
 
     configs.setup({
       -- A list of parser names, or "all" (the listed parsers MUST always be installed)
-      ensure_installed = { 'lua', 'javascript', 'typescript', 'tsx', 'markdown', 'markdown_inline', 'graphql' },
+      ensure_installed = {
+        'lua',
+        'javascript',
+        'typescript',
+        'tsx',
+        'markdown',
+        'markdown_inline',
+        'graphql',
+        'prisma',
+      },
+      ignore_install = {},
+      modules = {},
 
       -- Install parsers synchronously (only applied to `ensure_installed`)
       sync_install = false,

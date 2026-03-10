@@ -52,7 +52,7 @@ return {
     },
     {
       '<leader>fc',
-      '<cmd>lua Snacks.picker.files({ cwd = "/Users/weisin/software-engineering/projects/dotfiles" })<cr>',
+      '<cmd>lua Snacks.picker.files({ cwd = "/Users/weisin/software-engineering/projects/dotfiles", hidden = true })<cr>',
       desc = 'Find Config File',
     },
     {

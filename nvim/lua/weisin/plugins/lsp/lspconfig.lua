@@ -157,6 +157,7 @@ return {
       tailwindcss = {},
       marksman = {},
       graphql = {},
+      prismals = {},
     }
 
     local formatters = {
@@ -178,6 +179,8 @@ return {
 
     require('mason-lspconfig').setup({
       automatic_installation = false,
+      automatic_enable = true,
+      ensure_installed = {},
       handlers = {
         function(server_name)
           -- linters are handled by nvim-lint
