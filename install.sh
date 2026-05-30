@@ -30,4 +30,5 @@ create_symlink "$SCRIPT_DIR/bat" "$HOME/.config/bat"
 create_symlink "$SCRIPT_DIR/tmux/tmux.conf" "$HOME/.config/tmux/tmux.conf"
 create_symlink "$SCRIPT_DIR/scripts/tmux-sessionizer" "$HOME/.local/bin/tmux-sessionizer"
 create_symlink "$SCRIPT_DIR/lazygit/config.yml" "$HOME/.config/lazygit/config.yml"
+create_symlink "$SCRIPT_DIR/ghostty/config.ghostty" "$HOME/.config/ghostty/config.ghostty"
 
