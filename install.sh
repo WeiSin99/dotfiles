@@ -22,6 +22,7 @@ ensure_directory() {
 ensure_directory "$HOME/.local/bin"
 ensure_directory "$HOME/.config/tmux"
 ensure_directory "$HOME/.config/lazygit"
+ensure_directory "$HOME/.config/ghostty"
 
 create_symlink "$SCRIPT_DIR/aerospace/.aerospace.toml" "$HOME/.aerospace.toml"
 create_symlink "$SCRIPT_DIR/.zshrc" "$HOME/.zshrc"

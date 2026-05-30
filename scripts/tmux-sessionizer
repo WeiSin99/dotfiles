@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+claude_mode=0
+if [[ $1 == "-c" || $1 == "--claude" ]]; then
+  claude_mode=1
+  shift
+fi
+
 if [[ $# -eq 1 ]]; then
   selected=$1
 else
@@ -15,15 +21,22 @@ if [[ -z $selected ]]; then
 fi
 
 selected_name=$(basename "$selected" | tr . _)
+if [[ $claude_mode -eq 1 ]]; then
+  selected_name="${selected_name}-claude"
+fi
+
 tmux_running=$(pgrep tmux)
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-  tmux new-session -s $selected_name -c "$selected"
+  tmux new-session -ds $selected_name -c "$selected"
+  [[ $claude_mode -eq 1 ]] && tmux send-keys -t $selected_name 'claude' C-m
+  tmux attach-session -t $selected_name
   exit 0
 fi
 
 if ! tmux has-session -t=$selected_name 2> /dev/null; then
   tmux new-session -ds $selected_name -c "$selected"
+  [[ $claude_mode -eq 1 ]] && tmux send-keys -t $selected_name 'claude' C-m
 fi
 
 tmux switch-client -t $selected_name
