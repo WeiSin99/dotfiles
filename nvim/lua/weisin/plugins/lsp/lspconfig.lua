@@ -20,6 +20,11 @@ return {
         --  To jump back, press <C-t>.
         map('gd', '<cmd>lua Snacks.picker.lsp_definitions()<cr>', '[G]oto [D]efinition')
 
+        -- Jump to the definition in a vertical split (a new window/frame).
+        map('<leader>gd', function()
+          Snacks.picker.lsp_definitions { confirm = 'edit_vsplit' }
+        end, '[G]oto [D]efinition (vsplit)')
+
         -- Find references for the word under your cursor.
         map('gr', '<cmd>lua Snacks.picker.lsp_references()<cr>', '[G]oto [R]eferences')
 
