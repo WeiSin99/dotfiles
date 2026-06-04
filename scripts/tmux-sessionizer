@@ -13,10 +13,30 @@ else
     "insert/your/directory/here"
     "insert/your/directory/here"
   )
-  selected=$(printf "%s\n" "${dirs[@]}" | fzf --height 40% --layout reverse --border)
+  # running sessions, tagged "(running)" so we can tell them apart from dirs
+  sessions=$(tmux list-sessions -F '#{session_name} (running)' 2>/dev/null)
+  running=$(tmux list-sessions -F '#{session_name}' 2>/dev/null)
+  # project dirs, minus any whose session is already running (dedup)
+  dir_lines=""
+  for dir in "${dirs[@]}"; do
+    name=$(basename "$dir" | tr . _)
+    printf '%s\n' "$running" | grep -qxF "$name" || dir_lines+="$dir"$'\n'
+  done
+  selected=$( { [[ -n $sessions ]] && printf '%s\n' "$sessions"; printf '%s' "$dir_lines"; } | fzf --height 40% --layout reverse --border)
 fi
 
 if [[ -z $selected ]]; then
+  exit 0
+fi
+
+# Picked a running session → just attach/switch to it
+if [[ $selected == *" (running)" ]]; then
+  session_name=${selected% (running)}
+  if [[ -z $TMUX ]]; then
+    tmux attach-session -t "$session_name"
+  else
+    tmux switch-client -t "$session_name"
+  fi
   exit 0
 fi
 
