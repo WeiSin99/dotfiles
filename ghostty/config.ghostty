@@ -1,7 +1,8 @@
 theme = "Catppuccin Mocha"
-font-family = "CaskaydiaCove NFM SemiBold"
+font-family = "CaskaydiaCove Nerd Font Mono"
 font-size = 14
 background-opacity = 0.8
 background-blur-radius = 5
 cursor-style = block
 macos-option-as-alt = true
+font-thicken = true

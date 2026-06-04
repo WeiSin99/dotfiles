@@ -47,7 +47,7 @@ return {
         filter = function(entry)
           return entry.name ~= '.DS_Store' and entry.name ~= '.git' and entry.name ~= '.obsidian'
         end,
-        -- -- In which order to show file system entries
+        -- In which order to show file system entries
         -- sort = function(entries)
         --   -- technically can filter entries here too, and checking gitignore for _every entry individually_
         --   -- like I would have to in `content.filter` above is too slow. Here we can give it _all_ the entries
