@@ -57,7 +57,7 @@ return {
     },
     {
       '<leader>fn',
-      '<cmd>lua Snacks.picker.files({ cwd = "/Users/weisin/Documents/ws-vault" })<cr>',
+      '<cmd>lua Snacks.picker.files({ cwd = "/Users/weisin/Library/Mobile Documents/iCloud~md~obsidian/Documents/ws-vault" })<cr>',
       desc = 'Find notes',
     },
 

@@ -11,7 +11,7 @@ return {
     workspaces = {
       {
         name = 'My vault',
-        path = '~/Library/Mobile Documents/iCloud~md~obsidian/Documents/ws-vault',
+        path = '/Users/weisin/Library/Mobile Documents/iCloud~md~obsidian/Documents/ws-vault',
       },
     },
     legacy_commands = false,
@@ -39,9 +39,17 @@ return {
   keys = {
     { '<leader>ol', '<cmd>Obsidian links<cr>', desc = 'Obsidian links' },
     { '<leader>ob', '<cmd>Obsidian backlinks<cr>', desc = 'Obsidian backlinks' },
-    { '<leader>ot', '<cmd>Obsidian today<cr>', desc = 'Obsidian today' },
+    { '<leader>oT', '<cmd>Obsidian today<cr>', desc = 'Obsidian today' },
+    {
+      '<leader>ot',
+      function()
+        vim.cmd('botright vsplit')
+        vim.api.nvim_win_set_width(0, 60)
+        vim.cmd('Obsidian today')
+      end,
+      desc = 'Obsidian today (split)',
+    },
     { '<leader>od', '<cmd>Obsidian dailies<cr>', desc = 'Obsidian dailies' },
-    { '<leader>os', '<cmd>Obsidian search<cr>', desc = 'Obsidian search' },
     { '<leader>on', '<cmd>Obsidian new<cr>', desc = 'ObsidianNew' },
   },
 }
