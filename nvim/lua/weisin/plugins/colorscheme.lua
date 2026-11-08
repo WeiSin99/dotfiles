@@ -51,6 +51,7 @@ return {
               LspReferenceWrite = { bg = '#62647D' },
               MiniFilesCursorLine = { bg = '#62647D' },
               SnacksPickerPreviewCursorLine = { bg = '#62647D' },
+              SnacksPickerMatch = { link = 'Special' },
               TelescopePreviewLine = { link = 'CurSearch' },
               Search = { link = 'CurSearch' },
             }
