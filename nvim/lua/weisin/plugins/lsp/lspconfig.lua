@@ -182,22 +182,22 @@ return {
 
     require('mason-tool-installer').setup({ ensure_installed = ensure_installed })
 
+    -- vim.lsp.config merges these over the defaults in nvim-lspconfig's lsp/<name>.lua
+    vim.lsp.config('*', { capabilities = capabilities })
+    for server_name, server in pairs(servers) do
+      vim.lsp.config(server_name, server)
+    end
+
+    -- mason-lspconfig enables every Mason package that has an lspconfig config
     require('mason-lspconfig').setup({
-      automatic_installation = false,
-      automatic_enable = true,
       ensure_installed = {},
-      handlers = {
-        function(server_name)
-          -- linters are handled by nvim-lint
-          if vim.tbl_contains(linters, server_name) then
-            return
-          end
-
-          local server = servers[server_name] or {}
-
-          server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-          require('lspconfig')[server_name].setup(server)
-        end,
+      automatic_enable = {
+        exclude = vim.list_extend(
+          -- formatters are run by conform, not as language servers
+          vim.deepcopy(formatters),
+          -- linters are run by nvim-lint
+          vim.deepcopy(linters)
+        ),
       },
     })
   end,

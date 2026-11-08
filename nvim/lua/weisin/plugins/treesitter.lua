@@ -1,55 +1,47 @@
 return {
   'nvim-treesitter/nvim-treesitter',
+  branch = 'main',
+  -- The next commit (c82bf96f) drops Neovim 0.11 support. Remove this pin after upgrading to 0.12.
+  commit = '90cd6580e720caedacb91fdd587b747a6e77d61f',
   build = ':TSUpdate',
-  event = 'VeryLazy',
+  lazy = false, -- the main branch does not support lazy-loading
   config = function()
-    local configs = require('nvim-treesitter.configs')
+    -- runs asynchronously, and skips parsers that are already installed
+    require('nvim-treesitter').install({
+      'lua',
+      'javascript',
+      'typescript',
+      'tsx',
+      'markdown',
+      'markdown_inline',
+      'graphql',
+      'prisma',
+    })
 
-    configs.setup({
-      -- A list of parser names, or "all" (the listed parsers MUST always be installed)
-      ensure_installed = {
+    -- Neovim provides treesitter highlighting, but each filetype has to start it.
+    -- pcall skips buffers whose parser is not installed yet.
+    vim.api.nvim_create_autocmd('FileType', {
+      desc = 'Start treesitter highlighting',
+      group = vim.api.nvim_create_augroup('treesitter-highlight', { clear = true }),
+      pattern = {
         'lua',
         'javascript',
+        'javascriptreact',
         'typescript',
-        'tsx',
+        'typescriptreact',
         'markdown',
-        'markdown_inline',
         'graphql',
         'prisma',
       },
-      ignore_install = {},
-      modules = {},
-
-      -- Install parsers synchronously (only applied to `ensure_installed`)
-      sync_install = false,
-
-      -- Automatically install missing parsers when entering buffer
-      -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-      auto_install = false,
-
-      highlight = {
-        enable = true,
-
-        -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-        -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-        -- Using this option may slow down your editor, and you may see some duplicate highlights.
-        -- Instead of true it can also be a list of languages
-        additional_vim_regex_highlighting = false,
-      },
+      callback = function()
+        pcall(vim.treesitter.start)
+      end,
     })
 
     -- TODO: look for better folding method
-    -- use treesitter folding, this will fold all foldable area when file is open
-    -- vim.wo.foldmethod = 'expr'
-    -- vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-    --
-    -- -- create an autocommand to unfold everything when file is open
-    -- vim.api.nvim_create_autocmd({ 'BufReadPost', 'FileReadPost' }, {
-    --   desc = 'Unfold all foldable acre when file is open',
-    --   group = vim.api.nvim_create_augroup('treesitter-folding', { clear = true }),
-    --   callback = function()
-    --     vim.api.nvim_feedkeys('zR', 'n', true)
-    --   end,
-    -- })
+    -- to use treesitter folding, add these to the FileType callback above:
+    -- vim.wo[0][0].foldmethod = 'expr'
+    -- vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+    -- and set vim.o.foldlevelstart = 99 so files open unfolded
   end,
 }
